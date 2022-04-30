@@ -7,7 +7,7 @@ int main(int argc, char* argv[]){
     FILE* fp = fopen("./test_input.txt", "r");
     polygon_t** polygon_list = NULL;
     int n = load_polygons(fp, &polygon_list);
-    ASSERT(polygon_list != NULL, "polygon_list is NULL");
+    ASSERT(polygon_list != NULL, "polygon_list is NULL, initialization failed");
     fclose(fp);
 
     // print polygons

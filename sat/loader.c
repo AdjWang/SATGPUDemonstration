@@ -32,8 +32,8 @@ static void load_vertices(FILE* fp, polygon_t* polygon){
 static polygon_t* load_polygon(FILE* fp){
     int n_vertex = 0;
     fscanf(fp, "%d\n", &n_vertex);
-    if(n_vertex <= 0){
-        RAISE("n_vertex: %d <= 0\n", n_vertex);
+    if(n_vertex <= 2){
+        RAISE("n_vertex: %d <= 2\n", n_vertex);
     }
     DBG_PRINT("vertex num: %d\n", n_vertex);
 

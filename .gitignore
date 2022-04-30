@@ -3,4 +3,3 @@
 *.out
 *.stackdump
 *.txt
-!test*.txt

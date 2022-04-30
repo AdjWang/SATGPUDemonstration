@@ -100,7 +100,7 @@ static BOOL projection_is_overlap(const projection_t projection1, const projecti
 // ploygon --------------------------------------------------------------------
 
 polygon_t* new_polygon(int n_vertex){
-    if(n_vertex <= 0){
+    if(n_vertex <= 2){
         return NULL;
     }
     polygon_t* polygon = (polygon_t*)malloc(sizeof(polygon_t));
@@ -132,14 +132,23 @@ void del_polygon(polygon_t* polygon){
         polygon->axes = NULL;
     }
     free(polygon);
-    polygon = NULL;
 }
 
-void polygon_print(const polygon_t* polygon){
-    printf("points: %d\n", polygon->n);
-    for(int i=0; i<polygon->n; i++){
-        printf("(%lf, %lf)\n", polygon->vertices[i].x, polygon->vertices[i].y);
+static int polygon_print_point_list(const point_t* point_list, int n){
+    int c = 0;
+    c += printf("[");
+    for(int i=0; i<n; i++){
+        c += printf("(%.16lf,%.16lf),", point_list[i].x, point_list[i].y);
     }
+    c += printf("\b]\n");
+    return c;
+}
+
+int polygon_print(const polygon_t* polygon){
+    int c = 0;
+    c += printf("%d\n", polygon->n);
+    c += polygon_print_point_list(polygon->vertices, polygon->n);
+    return c;
 }
 
 void polygon_get_axes(polygon_t* polygon){

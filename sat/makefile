@@ -13,9 +13,8 @@ TEST_OBJECTS = $(TEST) $(OBJECTS)
 sat: $(MAIN_OBJECTS)
 	$(CC) -o $(OUTPUT) $(CFLAGS) $(MAIN_OBJECTS) $(LDFLAGS)
 
-test: $(TEST_OBJECTS) test_input.txt
-	$(CC) -o $(OUTPUT) $(CFLAGS) $(TEST_OBJECTS) $(LDFLAGS)\
-	&& ./$(OUTPUT)
+test: $(TEST_OBJECTS)
+	$(CC) -o $(OUTPUT) $(CFLAGS) $(TEST_OBJECTS) $(LDFLAGS)
 
 # objects
 main.o: config.h loader.h sat.h main.c
@@ -32,4 +31,6 @@ loader.o: config.h loader.h sat.h
 
 .PHONY: clean
 clean:
-	-rm $(OUTPUT) $(MAIN_OBJECTS)
+	-rm $(OUTPUT) $(OBJECTS)
+	-rm $(MAIN)
+	-rm $(TEST)

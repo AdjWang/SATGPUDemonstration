@@ -25,7 +25,7 @@ typedef struct polygon_t {
 
 extern polygon_t* new_polygon(int n_vertex);
 extern void del_polygon(polygon_t* polygon);
-extern void polygon_print(const polygon_t* polygon);
+extern int polygon_print(const polygon_t* polygon);
 extern void polygon_get_axes(polygon_t* polygon);
 extern BOOL polygon_is_overlap(const polygon_t* polygon1, const polygon_t* polygon2);
 
