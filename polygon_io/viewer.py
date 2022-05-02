@@ -1,30 +1,81 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from matplotlib.patches import Polygon
-from matplotlib.collections import PatchCollection
 import matplotlib.pyplot as plt
+from matplotlib.collections import PatchCollection
+from matplotlib.patches import Polygon
+import click
+from random import random
+import numpy as np
+import matplotlib
+matplotlib.use('agg')
+# matplotlib.use('TkAgg')
 
-fig, ax = plt.subplots()
 
-N = 3
-patches = []
+class SATPolygon:
+    def __init__(self, vertices, overlap_indices) -> None:
+        self.polygon = Polygon(vertices, True)
+        self.overlap_indices = overlap_indices
 
-points1 = hulls[0].points[hulls[0].vertices]
-points2 = np.random.rand(N, 2)
-print(points1)
-print(points2)
+    def has_overlap(self):
+        return len(self.overlap_indices) > 0
 
-polygon = Polygon(points1, True)
-patches.append(polygon)
-polygon = Polygon(points2, True)
-patches.append(polygon)
 
-colors = 100 * np.random.rand(len(patches))
-p = PatchCollection(patches, alpha=0.4)
-p.set_array(colors)
-ax.add_collection(p)
-fig.colorbar(p, ax=ax)
+def load(input_file):
+    polygons = []
+    with open(input_file, 'r') as f:
+        # total number of polygons
+        n = int(f.readline())
+        print(n)
+        for i in range(n):
+            # number of vertices
+            n_vertex = int(f.readline())
+            # list of vertices
+            vertices = eval(f.readline())
+            assert n_vertex == len(vertices), \
+                f"vertices length not match, please check ouput of polygon {i+1} (count from 1)"
+            # number of overlaps
+            n_index = int(f.readline())
+            # list of overlap indices
+            overlap_indices = eval(f.readline())
+            assert n_index == len(overlap_indices), \
+                f"indices length not match, please check ouput of polygon {i+1} (count from 1)"
+            polygons.append(SATPolygon(vertices, overlap_indices))
+    return polygons
 
-convex_hull_plot_2d(hulls[0])
-plt.show()
+
+def draw(polygon_group, output):
+    fig, axes = plt.subplots()
+
+    # draw polygon
+    patches = []
+    colors = []
+    for satpolygon in polygon_group:
+        patches.append(satpolygon.polygon)
+        if satpolygon.has_overlap():
+            colors.append(random() * 100)
+        else:
+            colors.append(0.0)
+    print(colors)
+
+    p = PatchCollection(patches, alpha=0.4)
+    p.set_array(colors)
+    axes.add_collection(p)
+
+    fig.colorbar(p, ax=axes)
+    # convex_hull_plot_2d(hulls[0])
+    plt.savefig(output)
+    # plt.show()
+
+
+@click.command()
+@click.option('--input', type=str, help='Input text file.')
+@click.option('--output', type=str, help='Output png file.')
+def main(input, output):
+    print(input, output)
+    polygons = load(input)
+    draw(polygons, output)
+
+
+if __name__ == '__main__':
+    main()

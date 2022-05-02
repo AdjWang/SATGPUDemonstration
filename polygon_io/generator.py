@@ -60,7 +60,7 @@ class PolygonGenerator:
                 f.write(end)
                 f.write(str(len(poly.points)))
                 f.write(end)
-                f.write(__list_formater(poly.points.tolist()))
+                f.write(__list_formater(poly.points[poly.vertices].tolist()))
 
 
 @click.command()
@@ -70,6 +70,10 @@ class PolygonGenerator:
 @click.option('--vmax', type=int, help='Maximal number of vertices.')
 @click.option('--output', type=str, help='Output text file.')
 def main(count, point, vmin, vmax, output):
+    """
+    e.g.
+    python generator.py --count 5 --point 30 --vmin 3 --vmax 6 --output polygon_input.txt
+    """
     poly_generator = PolygonGenerator(point)
     polygons = [poly_generator.random(randint(vmin, vmax))
                 for _ in range(count)]
@@ -77,6 +81,4 @@ def main(count, point, vmin, vmax, output):
 
 
 if __name__ == '__main__':
-    # e.g.
-    # python .\generator.py --count 5 --point 30 --vmin 3 --vmax 6 --output polygon_input.txt
     main()
