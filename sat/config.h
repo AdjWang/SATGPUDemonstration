@@ -24,7 +24,10 @@
                                     }while(0)
 
 #ifdef DEBUG
-#define DBG_PRINT(format, ...)    printf(format, ##__VA_ARGS__)
+#define DBG_PRINT(format, ...)      do{\
+                                        printf("[%s:%d, func: %s] ", __FILE__, __LINE__, __func__);\
+                                        printf(format, ##__VA_ARGS__);\
+                                    }while(0)
 #else
 #define DBG_PRINT(format, ...)
 #endif

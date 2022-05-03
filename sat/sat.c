@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <float.h>
 #include <math.h>
 #include "sat.h"
 
@@ -90,6 +91,14 @@ static vector_t vector_normalize(const vector_t vec){
     };
 }
 
+static vector_t vector_perpendicular(const vector_t vec){
+    // or (y, -x)
+    return (vector_t){
+        .x = -vec.y,
+        .y = vec.x,
+    };
+}
+
 // projection -----------------------------------------------------------------
 
 static BOOL projection_is_overlap(const projection_t projection1, const projection_t projection2){
@@ -140,7 +149,7 @@ static int polygon_print_point_list(const point_t* point_list, int n){
     for(int i=0; i<n; i++){
         c += printf("(%.16lf,%.16lf),", point_list[i].x, point_list[i].y);
     }
-    c += printf("\b]\n");
+    c += printf("]\n");
     return c;
 }
 
@@ -157,7 +166,8 @@ void polygon_get_axes(polygon_t* polygon){
         point_t p2 = polygon->vertices[(i+1) == polygon->n ? 0 : (i+1)];
         vector_t edge = vector_sub(*(vector_t*)&p1, *(vector_t*)&p2);
         vector_t norm = vector_normalize(edge);
-        polygon->axes[i] = norm;    // copy by value
+        vector_t perp = vector_perpendicular(norm);
+        polygon->axes[i] = perp;    // copy by value
     }
 }
 
@@ -167,7 +177,8 @@ static projection_t polygon_project(const polygon_t* polygon, const vector_t axi
         double proj_num = vector_dot(axis, *(vector_t*)&(polygon->vertices[i]));
         if(proj_num < proj_min){
             proj_min = proj_num;
-        }else if(proj_num > proj_max){
+        }
+        if(proj_num > proj_max){
             proj_max = proj_num;
         }
     }

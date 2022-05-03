@@ -140,6 +140,22 @@ int main(int argc, char* argv[]){
 
     remove_temp_test_file();
 
+
+    generate_temp_test_file("\
+2\n\
+3\n\
+[(0.1268362978956069,0.41049566540979554),(0.3667669280136283,0.9061009375103477),(0.3205326471661416,0.9157739930630437)]\n\
+3\n\
+[(0.6464897380663633,0.5765302172591958),(0.3205326471661416,0.9157739930630437),(0.4121879820748392,0.40086738367448793)]");
+
+    polygon_t** case2 = NULL;
+    int n = test_load_polygons(&case2);
+    BOOL ret = polygon_is_overlap(case2[0], case2[1]);
+    ASSERT(ret == TRUE, "test case2 failed. should overlap\n");
+    test_free_polygons(case2, n);
+
+    remove_temp_test_file();
+
     // edge cases
     // the number of polygons is 0
     generate_temp_test_file("0");

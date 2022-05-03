@@ -4,3 +4,4 @@
 *.stackdump
 *.txt
 *.png
+!test*

@@ -30,6 +30,7 @@ class PolygonGenerator:
         """
         vertex_indices = np.random.choice(
             range(len(self.sample_points)), vertex_num, replace=False)
+        assert len(vertex_indices.tolist()) == len(set(vertex_indices.tolist()))
         return ConvexHull(self.sample_points[vertex_indices])
 
     @staticmethod
@@ -45,9 +46,9 @@ class PolygonGenerator:
 
         2
         4
-        [(0.0,0.0),(1.0,0.0),(1.0,1.0),(0.0,1.0)]
+        [(0.0,0.0),(1.0,0.0),(1.0,1.0),(0.0,1.0),]
         5
-        [(0.0,0.0),(1.0,0.0),(1.0,1.0),(0.5,1.5),(0.0,1.0)]
+        [(0.0,0.0),(1.0,0.0),(1.0,1.0),(0.5,1.5),(0.0,1.0),]
         ```
         """
         def __list_formater(points):
@@ -58,9 +59,12 @@ class PolygonGenerator:
             f.write(str(len(polygons)))
             for poly in polygons:
                 f.write(end)
-                f.write(str(len(poly.points)))
+                points = poly.points[poly.vertices]
+                # NOTE that len(points) can be 3 at lowest, indicating that all
+                # other points are inside the polygon.
+                f.write(str(len(points)))
                 f.write(end)
-                f.write(__list_formater(poly.points[poly.vertices].tolist()))
+                f.write(__list_formater(points.tolist()))
 
 
 @click.command()

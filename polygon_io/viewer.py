@@ -58,7 +58,7 @@ def draw(polygon_group, output):
             colors.append(0.0)
     print(colors)
 
-    p = PatchCollection(patches, alpha=0.4)
+    p = PatchCollection(patches, alpha=0.15)
     p.set_array(colors)
     axes.add_collection(p)
 
