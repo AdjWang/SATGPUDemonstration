@@ -1,9 +1,8 @@
 OUTPUT = sat.out
-CFLAGS = -g
+CFLAGS = -g -Wall
 LDFLAGS = -lm
 
-CC = nvcc
-CFORMAT = cu
+CC = cc
 MAIN = main.o
 TEST = test.o
 OBJECTS = sat.o loader.o
@@ -18,17 +17,17 @@ test: $(TEST_OBJECTS)
 	$(CC) -o $(OUTPUT) $(CFLAGS) $(TEST_OBJECTS) $(LDFLAGS)
 
 # objects
-main.o: config.h loader.h sat.h main.$(CFORMAT)
-	$(CC) -o main.o $(CFLAGS) -c main.$(CFORMAT)
+main.o: config.h loader.h sat.h main.c
+	$(CC) -o main.o $(CFLAGS) -c main.c
 
-test.o: config.h loader.h sat.h test.$(CFORMAT)
-	$(CC) -o test.o $(CFLAGS) -c test.$(CFORMAT)
+test.o: config.h loader.h sat.h test.c
+	$(CC) -o test.o $(CFLAGS) -c test.c
 
 sat.o: config.h sat.h
-	$(CC) -o sat.o $(CFLAGS) -c sat.$(CFORMAT)
+	$(CC) -o sat.o $(CFLAGS) -c sat.c
 
 loader.o: config.h loader.h sat.h
-	$(CC) -o loader.o $(CFLAGS) -c loader.$(CFORMAT)
+	$(CC) -o loader.o $(CFLAGS) -c loader.c
 
 .PHONY: clean
 clean:

@@ -59,8 +59,6 @@ int load_polygons(FILE* fp, /*out*/ polygon_t*** p_polygon_list){
     for(int i=0; i<n_polygon; i++){
         // malloc
         polygon_t* polygon = load_polygon(fp);
-        // pre-calculate axes
-        polygon_get_axes(polygon);
 
         (*p_polygon_list)[i] = polygon;
     }

@@ -62,16 +62,6 @@ make clean
 echo "========== make ==========="
 make
 echo "========== test ==========="
-echo -n "non existing file..."
-./sat.out ./wtf > /dev/null
-# should exit with an error if input file not exists.
-if [ $? -ne 0 ]; then
-    echo -e "${GREEN}PASSED${NC}"
-else
-    echo -e "${RED}FAILED${NC}"
-    exit 1
-fi
-
 echo -n "test1 nonoverlap..."
 ./sat.out ./testcases/test1_nonoverlap.txt > ./testcases/tempoutput.txt
 diff ./testcases/test1_nonoverlap_res.txt ./testcases/tempoutput.txt > /dev/null
