@@ -32,4 +32,13 @@ extern void detect_overlap_gpu(polygon_t** polygon_list, int** result, int n);
 // only for test use
 extern BOOL polygon_is_overlap(const polygon_t* polygon1, const polygon_t* polygon2);
 
+extern void calculate_axes(point_t* vertices_gpu, int n_vertex, int* owner_map_gpu, int* polygon_n_map_gpu,
+                           /*out*/vector_t** p_axes_gpu);
+extern void make_owner_map(polygon_t** polygon_list, int n_polygon, int n_vertex, /*out*/int** p_owner_map, /*out*/int** p_owner_map_gpu);
+extern void calculate_projection_endpoints(point_t* vertices_gpu, vector_t* axes_gpu, int* owner_map, int n_vertex,
+                                           /*out*/double** p_projection_endpoints_gpu);
+extern void calculate_projection_segments(double* projection_endpoints_gpu, polygon_t** polygon_list, int n_polygon, int n_vertex,
+                                          /*out*/projection_t** p_projection_map);
+extern void calculate_is_overlapping(projection_t* projection_map_gpu, int* owner_map_gpu, int n_vertex, /*output*/int** result);
+
 #endif
