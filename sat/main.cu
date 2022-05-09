@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include "loader.h"
 #include "sat.h"
+#include "dependence.h"
 
 static int print_overlap_result(FILE* stream, const int* overlap_indices, int n){
     int print_count = 0;
@@ -108,11 +109,15 @@ int main(int argc, char* argv[]){
             RAISE("calloc failed.\n");
         }
     }
+
+    double iStart=cpuSecond();
     if(gpu_flag == 1){
         detect_overlap_gpu(polygon_list, result, n);
     }else{
         detect_overlap(polygon_list, result, n);
     }
+    double iElaps=cpuSecond()-iStart;
+    printf("CPU Execution Time elapsed %f sec\n",iElaps);
 
     // 3. print results
     FILE* ofp = NULL;
