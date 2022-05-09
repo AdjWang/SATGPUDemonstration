@@ -85,20 +85,20 @@ void del_polygon(polygon_t* polygon){
     free(polygon);
 }
 
-static int polygon_print_point_list(const point_t* point_list, int n){
+static int polygon_print_point_list(FILE* stream, const point_t* point_list, int n){
     int c = 0;
-    c += printf("[");
+    c += fprintf(stream, "[");
     for(int i=0; i<n; i++){
-        c += printf("(%.16lf,%.16lf),", point_list[i].x, point_list[i].y);
+        c += fprintf(stream, "(%.16lf,%.16lf),", point_list[i].x, point_list[i].y);
     }
-    c += printf("]\n");
+    c += fprintf(stream, "]\n");
     return c;
 }
 
-int polygon_print(const polygon_t* polygon){
+int polygon_print(FILE* stream, const polygon_t* polygon){
     int c = 0;
-    c += printf("%d\n", polygon->n);
-    c += polygon_print_point_list(polygon->vertices, polygon->n);
+    c += fprintf(stream, "%d\n", polygon->n);
+    c += polygon_print_point_list(stream, polygon->vertices, polygon->n);
     return c;
 }
 

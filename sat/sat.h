@@ -1,6 +1,7 @@
 #ifndef __SAT_H__
 #define __SAT_H__
 #include "config.h"
+#include <stdio.h>
 
 typedef struct point_t {
     double x;
@@ -25,14 +26,12 @@ typedef struct polygon_t {
 
 extern polygon_t* new_polygon(int n_vertex);
 extern void del_polygon(polygon_t* polygon);
-extern int polygon_print(const polygon_t* polygon);
+extern int polygon_print(FILE* stream, const polygon_t* polygon);
 extern void detect_overlap(polygon_t** polygon_list, int** result, int n);
 extern void detect_overlap_gpu(polygon_t** polygon_list, int** result, int n);
 
 // only for test use
 extern BOOL polygon_is_overlap(const polygon_t* polygon1, const polygon_t* polygon2);
-
-extern void make_owner_map(polygon_t** polygon_list, int n_polygon, int n_vertex, /*out*/int** p_owner_map, /*out*/int** p_owner_map_gpu);
 
 extern void calculate_axes(point_t* vertices_gpu, int n_vertex, int* owner_map_gpu, int* polygon_n_map_gpu,
                            /*out*/vector_t** p_axes_gpu);
