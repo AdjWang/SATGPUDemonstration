@@ -78,6 +78,16 @@ else
     exit 1
 fi
 
+echo -n "test1 nonoverlap(GPU)..."
+./sat.out -i ./testcases/test1_nonoverlap.txt -g > ./testcases/tempoutput.txt
+diff ./testcases/test1_nonoverlap_res.txt ./testcases/tempoutput.txt > /dev/null
+if [ $? -eq 0 ]; then
+    echo -e "${GREEN}PASSED${NC}"
+else
+    echo -e "${RED}FAILED${NC}"
+    exit 1
+fi
+
 echo -n "test2 overlap..."
 ./sat.out -i ./testcases/test2_overlap.txt > ./testcases/tempoutput.txt
 diff ./testcases/test2_overlap_res.txt ./testcases/tempoutput.txt > /dev/null
@@ -88,8 +98,28 @@ else
     exit 1
 fi
 
+echo -n "test2 overlap(GPU)..."
+./sat.out -i ./testcases/test2_overlap.txt -g > ./testcases/tempoutput.txt
+diff ./testcases/test2_overlap_res.txt ./testcases/tempoutput.txt > /dev/null
+if [ $? -eq 0 ]; then
+    echo -e "${GREEN}PASSED${NC}"
+else
+    echo -e "${RED}FAILED${NC}"
+    exit 1
+fi
+
 echo -n "test3 nonoverlap..."
 ./sat.out -i ./testcases/test3_nonoverlap.txt > ./testcases/tempoutput.txt
+diff ./testcases/test3_nonoverlap_res.txt ./testcases/tempoutput.txt > /dev/null
+if [ $? -eq 0 ]; then
+    echo -e "${GREEN}PASSED${NC}"
+else
+    echo -e "${RED}FAILED${NC}"
+    exit 1
+fi
+
+echo -n "test3 nonoverlap(GPU)..."
+./sat.out -i ./testcases/test3_nonoverlap.txt -g > ./testcases/tempoutput.txt
 diff ./testcases/test3_nonoverlap_res.txt ./testcases/tempoutput.txt > /dev/null
 if [ $? -eq 0 ]; then
     echo -e "${GREEN}PASSED${NC}"

@@ -8,68 +8,6 @@
 #include <cuda_runtime.h>
 #include "dependence.h"
 
-// deprecated -----------------------------------------------------------------
-
-// point_t* new_point(double x, double y){
-//     point_t* point = (point_t*)malloc(sizeof(point_t));
-//     if(!point){
-//         RAISE("malloc failed\n");
-//     }
-//     point->x = x;
-//     point->y = y;
-//     return point;
-// }
-
-// void del_point(point_t* point){
-//     if(point){
-//         free(point);
-//         point = NULL;
-//     }
-// }
-
-// vector_t* new_vector(double x, double y){
-//     vector_t* vector = (vector_t*)malloc(sizeof(vector_t));
-//     if(!vector){
-//         RAISE("malloc failed\n");
-//     }
-//     vector->x = x;
-//     vector->y = y;
-//     return vector;
-// }
-
-// void del_vector(vector_t* vector){
-//     if(vector){
-//         free(vector);
-//         vector = NULL;
-//     }
-// }
-
-// vector_t* vector_sub(const vector_t* vec1, const vector_t* vec2, vector_t* ret){
-//     ret->x = vec1->x - vec2->x;
-//     ret->y = vec1->y - vec2->y;
-//     return ret;
-// }
-
-// double vector_dot(const vector_t* vec1, const vector_t* vec2){
-//     return vec1->x*vec2->x + vec1->y*vec2->y;
-// }
-
-// double vecotr_magnitude(const vector_t* vec){
-//     return sqrt(vec->x*vec->x + vec->y*vec->y);
-// }
-
-// vector_t* vector_normalize(const vector_t* vec, vector_t* ret){
-//     double mag = vecotr_magnitude(vec);
-//     ret->x = vec->x / mag;
-//     ret->y = vec->y / mag;
-//     return ret;
-// }
-
-// BOOL projection_is_overlap(const projection_t* projection1, const projection_t* projection2){
-//     return (projection1->left < projection2->right
-//         && projection1->right > projection2->left);
-// }
-
 // vector ---------------------------------------------------------------------
 
 static vector_t vector_sub(const vector_t vec1, const vector_t vec2){
@@ -281,6 +219,33 @@ __device__ static vector_t vector_perpendicular_gpu(const vector_t vec){
     };
 }
 
+// Get minimal and maximal value of endpoints[start : end].
+// range: [start, end)
+__device__ static projection_t min_max_gpu(const double* endpoints, int n){
+    double proj_min=INFINITY, proj_max=-INFINITY;
+    // printf("endpoings: [%d, %d)\n", start, end);
+    for(int i=0; i<n; i++){
+        double proj_num = endpoints[i];
+        // printf("%lf ", proj_num);
+        if(proj_num < proj_min){
+            proj_min = proj_num;
+        }
+        if(proj_num > proj_max){
+            proj_max = proj_num;
+        }
+    }
+    // printf("\n");
+    return (projection_t){
+        .left = proj_min,
+        .right = proj_max,
+    };
+}
+
+__device__ static BOOL projection_is_overlap_gpu(const projection_t* projection1, const projection_t* projection2){
+    return (projection1->left < projection2->right
+        && projection1->right > projection2->left);
+}
+
 // Flatten vertices of polygons for further parallelizing.
 // vertices of polygon i is vertices[i_polygon_map[i] : i_polygon_map[i] + polygon_n_map[i]]
 static int util_flatten(polygon_t** polygon_list, int n_polygon,
@@ -347,6 +312,7 @@ void make_owner_map(polygon_t** polygon_list, int n_polygon, int n_vertex, /*out
         int polygon_n_vertex = polygon_list[i]->n;
         for(int j=0; j<polygon_n_vertex; j++){
             *p_owner = i;
+            p_owner++;
         }
     }
     // return
@@ -427,21 +393,21 @@ void calculate_axes(point_t* vertices_gpu, int n_vertex, int* owner_map_gpu, int
 //     actually should be projection_endpoints[n_axis][n_vertex]
 // description:
 //   
-__global__ static void kernel_get_projection_endpoint(point_t* vertices, vector_t* axes, int* owner_map, /*out*/double* projtion_endpoints, int n_vertex){
+__global__ static void kernel_get_projection_endpoints(point_t* vertices, vector_t* axes, int* owner_map, int n_vertex, /*out*/double* projection_endpoints){
     int ix = threadIdx.x + blockIdx.x * blockDim.x;
     int iy = threadIdx.y + blockIdx.y * blockDim.y;
-    int idx = iy * gridDim.x * blockDim.x + ix;
+    // int idx = iy * gridDim.x * blockDim.x + ix;
 
-    printf("thread_id(%d,%d) block_id(%d,%d) coordinate(%d,%d) global index %2d\n", \
-        threadIdx.x, threadIdx.y, blockIdx.x, blockIdx.y, ix, iy, idx);
+    // printf("thread_id(%d,%d) block_id(%d,%d) coordinate(%d,%d) global index %2d\n", \
+    //     threadIdx.x, threadIdx.y, blockIdx.x, blockIdx.y, ix, iy, idx);
     int i_vertex = ix;
     int i_axis = iy;
     int i_proj = i_axis * n_vertex + i_vertex;
     if(i_vertex < n_vertex && i_axis < n_vertex){
-        if(owner_map[i_vertex] != owner_map[i_axis]){
+        // if(owner_map[i_vertex] != owner_map[i_axis]){
             double projection = vector_dot_gpu(*(vector_t*)&vertices[i_vertex], axes[i_axis]);
-            projtion_endpoints[i_proj] = projection;
-        }
+            projection_endpoints[i_proj] = projection;
+        // }
     }
 }
 void calculate_projection_endpoints(point_t* vertices_gpu, vector_t* axes_gpu, int* owner_map_gpu, int n_vertex,
@@ -457,9 +423,8 @@ void calculate_projection_endpoints(point_t* vertices_gpu, vector_t* axes_gpu, i
     dim3 block(dimx, dimy);
     dim3 grid((n_vertex - 1)/block.x + 1, (n_vertex - 1)/block.y + 1);
 
-    // double* projection_endpoints = *p_projection_endpoints_gpu;
-    printf("%d\n", n_vertex);
-    kernel_get_projection_endpoint<<<grid, block>>>(vertices_gpu, axes_gpu, owner_map_gpu, /*out*/*p_projection_endpoints_gpu, n_vertex);
+    // printf("%d\n", n_vertex);
+    kernel_get_projection_endpoints<<<grid, block>>>(vertices_gpu, axes_gpu, owner_map_gpu, n_vertex, /*out*/*p_projection_endpoints_gpu);
     CHECK(cudaDeviceSynchronize());
 }
 
@@ -478,43 +443,92 @@ void calculate_projection_endpoints(point_t* vertices_gpu, vector_t* axes_gpu, i
 // description:
 //   1. for a certain i_polygon, its vertices is
 //      projection_endpoints[i_axis][i_polygon_map[i_polygon] : i_polygon_map[i_polygon] + polygon_n_vertex[i_polygon]]
-__global__ static void kernel_get_projection(double* projection_endpoints, int* i_polygon_map, int* polygon_n_map,
-                                          int n_vertex, int n_polygon, /*out*/projection_t* projection_map){
+__global__ static void kernel_get_projection_segments(double* projection_endpoints, int* i_polygon_map, int* polygon_n_map,
+                                             int n_vertex, int n_polygon, /*out*/projection_t* projection_map){
     int ix = threadIdx.x + blockIdx.x * blockDim.x;
     int iy = threadIdx.y + blockIdx.y * blockDim.y;
-    int idx = iy * gridDim.x * blockDim.x + ix;
+    // int idx = iy * gridDim.x * blockDim.x + ix;
 
-    printf("thread_id(%d,%d) block_id(%d,%d) coordinate(%d,%d) global index %2d\n", \
-        threadIdx.x, threadIdx.y, blockIdx.x, blockIdx.y, ix, iy, idx);
+    // printf("thread_id(%d,%d) block_id(%d,%d) coordinate(%d,%d) global index %2d\n", \
+    //     threadIdx.x, threadIdx.y, blockIdx.x, blockIdx.y, ix, iy, idx);
 
+    int i_axis = ix;
+    int i_polygon = iy;
+    if(i_axis < n_vertex && i_polygon < n_polygon){
+        // index of a polygon in flattened vertices
+        int polygon_idx = i_polygon_map[i_polygon];
+        // n vertices of a polygon
+        int polygon_n_vertex = polygon_n_map[i_polygon];
+        // calculate projection segment
+        double* vertices_slice = &projection_endpoints[i_axis*n_vertex + polygon_idx];
+        projection_t projection_segment = min_max_gpu(vertices_slice, polygon_n_vertex);
+        // return
+        projection_map[i_axis*n_polygon + i_polygon] = projection_segment;
+    }
 }
-void calculate_projection_segments(double* projection_endpoints_gpu, polygon_t** polygon_list, int n_polygon, int n_vertex,
-                                          /*out*/projection_t** p_projection_map){
+void calculate_projection_segments(double* projection_endpoints_gpu, int* i_polygon_map_gpu, int* polygon_n_map_gpu,
+                                   int n_vertex, int n_polygon, /*out*/projection_t** p_projection_map){
     ASSERT(*p_projection_map == NULL, "*p_projection_map should be NULL\n");
 
-    // TODO
+    CHECK(cudaMalloc(p_projection_map, n_vertex*n_polygon * sizeof(projection_t)));
+
+    const int dimx = 4;
+    const int dimy = 4;
+    dim3 block(dimx, dimy);
+    dim3 grid((n_vertex - 1)/block.x + 1, (n_polygon - 1)/block.y + 1);
+
+    kernel_get_projection_segments<<<grid, block>>>(projection_endpoints_gpu, i_polygon_map_gpu, polygon_n_map_gpu, n_vertex, n_polygon, *p_projection_map);
+    CHECK(cudaDeviceSynchronize());
 }
 
 // Get overlapping map of polygons.
 // nx = n_vertex, ny = n_polygon
 // input:
-//   projection_t projection_map[n_polygon * n_vertex]
+//   projection_t projection_map[n_vertex * n_polygon]
 //     actually should be projection_map[n_vertex][n_polygon]
 //   int owner_map[n_vertex]
 // output:
 //   int result[n_polygon * n_polygon]
 // description:
-__global__ static void kernel_get_overlapping(projection_t* projection_map, int* owner_map, int* result){
+__global__ static void kernel_get_overlapping(projection_t* projection_map, int n_vertex, int n_polygon, /*out*/int* result){
+    int ix = threadIdx.x + blockIdx.x * blockDim.x;
+    int iy = threadIdx.y + blockIdx.y * blockDim.y;
+    int iz = threadIdx.z + blockIdx.z * blockDim.z;
 
+    int i_polygon_a = ix;
+    int i_polygon_b = iy;
+    int i_axis = iz;
+    if(i_polygon_a < n_polygon && i_polygon_b < n_polygon && i_axis < n_vertex){
+        if(result[i_polygon_a*n_polygon + i_polygon_b] != 0){
+            projection_t* p_projection_a = &projection_map[i_axis*n_polygon + i_polygon_a];
+            projection_t* p_projection_b = &projection_map[i_axis*n_polygon + i_polygon_b];
+            if(projection_is_overlap_gpu(p_projection_a, p_projection_b) == FALSE){
+                // NOTE: test race conditions
+                result[i_polygon_a*n_polygon + i_polygon_b] &= 0;   // set is not overlapping
+            }
+        }// else the 2 polygons can not be overlapped, no need to calculate
+    }
 }
-void calculate_is_overlapping(projection_t* projection_map_gpu, int* owner_map_gpu, int n_vertex, /*output*/int** result){
-    ASSERT(result != NULL, "result should not be NULL\n");
-    // TODO
+void calculate_is_overlapping(projection_t* projection_map_gpu, int n_vertex, int n_polygon, /*output*/int** p_result){
+    ASSERT(*p_result == NULL, "*p_result should be NULL\n");
+
+    CHECK(cudaMalloc(p_result, n_polygon*n_polygon * sizeof(int)));
+    CHECK(cudaMemset(*p_result, 0xFF, n_polygon*n_polygon * sizeof(int)));
+
+    const int dimx = 4;
+    const int dimy = 4;
+    const int dimz = 4;
+    dim3 block(dimx, dimy, dimz);
+    dim3 grid((n_polygon - 1)/block.x + 1, (n_polygon - 1)/block.y + 1, (n_vertex - 1)/block.z + 1);
+
+    kernel_get_overlapping<<<grid, block>>>(projection_map_gpu, n_vertex, n_polygon, *p_result);
+    CHECK(cudaDeviceSynchronize());
 }
 
 // global interfaces and export for user
 
 void detect_overlap_gpu(polygon_t** polygon_list, int** result, int n_polygon){
+    ASSERT(result != NULL, "result should not be NULL\n");
     initDevice(0);
 
     // 1. flatten vertices of all polygons to device
@@ -534,94 +548,49 @@ void detect_overlap_gpu(polygon_t** polygon_list, int** result, int n_polygon){
 
     // 3. calculate projection endpoints
     double* projection_endpoints_gpu = NULL;   // destructor: cudaFree
-    calculate_projection_endpoints(vertices_gpu, axes_gpu, owner_map, n_vertex, &projection_endpoints_gpu);
+    calculate_projection_endpoints(vertices_gpu, axes_gpu, owner_map_gpu, n_vertex, /*out*/&projection_endpoints_gpu);
 
     // 4. calculate projection segments
     projection_t* projection_map_gpu = NULL;   // destructor: cudaFree
-    calculate_projection_segments(projection_endpoints_gpu, polygon_list, n_polygon, n_vertex, /*out*/&projection_map_gpu);
+    calculate_projection_segments(projection_endpoints_gpu, i_polygon_map_gpu, polygon_n_map_gpu, n_vertex, n_polygon, /*out*/&projection_map_gpu);
 
     // 5. calculate overlapping
-    calculate_is_overlapping(projection_map_gpu, owner_map_gpu, n_vertex, result);
+    int* result_gpu = NULL;
+    calculate_is_overlapping(projection_map_gpu, n_vertex, n_polygon, /*out*/&result_gpu);
+
+    // set result
+    int* result_host = (int*)malloc(n_polygon*n_polygon * sizeof(int));
+    if(!result_host){
+        RAISE("malloc failed.\n");
+    }
+    CHECK(cudaMemcpy(result_host, result_gpu, n_polygon*n_polygon * sizeof(int), cudaMemcpyDeviceToHost));
+    for(int i_polygon_a=0; i_polygon_a<n_polygon; i_polygon_a++){
+        for(int i_polygon_b=0; i_polygon_b<n_polygon; i_polygon_b++){
+            if(i_polygon_a == i_polygon_b){
+                result[i_polygon_a][i_polygon_b] = 0;
+                continue;
+            }
+            int i = i_polygon_a*n_polygon + i_polygon_b;
+            result[i_polygon_a][i_polygon_b] = (result_host[i] != 0);
+        }
+    }
+    free(result_host);
     
     // recycle resources
-    // from 3.
+    // from 5.
+    cudaFree(result_gpu);
+    // from 4.
     cudaFree(projection_map_gpu);
+    // from 3.
     cudaFree(projection_endpoints_gpu);
-    cudaFree(owner_map_gpu);
     // from 2.
     cudaFree(axes_gpu);
-    // from 1.
-    cudaFree(vertices_gpu);
-
-    // from 3.
+    cudaFree(owner_map_gpu);
     free(owner_map);
-
-
-    // calculate projections --------------------------------------------------
-    
-    // malloc on device
-    // argument
-
-
-
-    // cpu logics
-    // copy projections from device to host
-    // double* projections = (double*)malloc(n_vertex*n_vertex * sizeof(double));
-    // if(!projections){
-    //     RAISE("malloc failed.\n");
-    // }
-    // CHECK(cudaMemcpy(projections, projections_gpu, n_vertex*n_vertex * sizeof(double), cudaMemcpyDeviceToHost));
-    
-    // projection_t* projection_group = (projection_t*)malloc(n*n * sizeof(projection_t));
-    // for(int i_axis=0; i_axis<n_vertex; i_axis++){
-
-    //     for(int i_vertex=0; i_vertex<n_vertex; i_vertex++){
-
-    //     }
-    // }
-
-    // // make prefix-sum for polygon_n, aggregate projections to polygons
-    // int* polygon_n = (int*)malloc(n * sizeof(int));
-    // if(!polygon_n){
-    //     RAISE("malloc failed.\n");
-    // }
-    // int* prefixsum_polygon_n = (int*)malloc(n * sizeof(int));
-    // if(!prefixsum_polygon_n){
-    //     RAISE("malloc failed.\n");
-    // }
-    // for(int i=0; i<n; i++){
-    //     polygon_n[i] = polygon_list[i]->n;
-    //     prefixsum_polygon_n[i] = polygon_list[i]->n;
-    // }
-    // for(int i=1; i<n; i++){
-    //     prefixsum_polygon_n[i] += prefixsum_polygon_n[i-1];
-    // }
-    
-    // int* polygon_n_gpu = NULL;
-    // int* prefixsum_polygon_n_gpu = NULL;
-    // CHECK(cudaMalloc((int**)&polygon_n_gpu, n * sizeof(int)));
-    // CHECK(cudaMemcpy(polygon_n_gpu, polygon_n, n * sizeof(int), cudaMemcpyHostToDevice));
-    // CHECK(cudaMalloc((int**)&prefixsum_polygon_n_gpu, n * sizeof(int)));
-    // CHECK(cudaMemcpy(prefixsum_polygon_n_gpu, prefixsum_polygon_n, n * sizeof(int), cudaMemcpyHostToDevice));
-
-    // dim3 block_1(dimx, dimy);
-    // dim3 grid_1((n - 1)/block_1.x + 1, (n - 1)/block_1.y + 1);
-    // sat_set_projects<<<grid_1, block_1>>>(polygon_n_gpu, prefixsum_polygon_n_gpu, projections_gpu, n);
-    // CHECK(cudaDeviceSynchronize());
-
-    // cudaFree(prefixsum_polygon_n_gpu);
-    // cudaFree(polygon_n_gpu);
-    // cudaFree(vertices_gpu);
-    // cudaFree(axes_gpu);
-    // cudaFree(owner_map_gpu);
-
-    // cudaFree(projections_gpu);
-
-    // free(prefixsum_polygon_n);
-    // free(polygon_n);
-    // // free(projection_group);
-    // free(projections);
-    // free(owner_map);
+    // from 1.
+    cudaFree(polygon_n_map_gpu);
+    cudaFree(i_polygon_map_gpu);
+    cudaFree(vertices_gpu);
 
     cudaDeviceReset();
 }

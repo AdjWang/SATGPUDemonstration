@@ -92,8 +92,14 @@ int main(int argc, char* argv[]){
 
     // 2. do sat detection
     int** result = (int**)malloc(n*sizeof(int*));
+    if(!result){
+        RAISE("malloc failed.\n");
+    }
     for(int i=0; i<n; i++){
         result[i] = (int*)calloc(n, sizeof(int));
+        if(!result[i]){
+            RAISE("calloc failed.\n");
+        }
     }
     if(gpu_flag == 1){
         detect_overlap_gpu(polygon_list, result, n);
