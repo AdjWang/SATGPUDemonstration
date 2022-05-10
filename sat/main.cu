@@ -111,21 +111,21 @@ int main(int argc, char* argv[]){
     }
 
     if(gpu_flag == 1){
-	initDevice(0);
-    	double iStart = cpuSecond();
+        initDevice(0);
+        double iStart = cpuSecond();
 
         detect_overlap_gpu(polygon_list, result, n);
 
-	double iElaps = cpuSecond() - iStart;
-	printf("GPU Execution Time elapsed %f sec\n",iElaps);
-    	cudaDeviceReset();
+        double iElaps = cpuSecond() - iStart;
+        printf("GPU Execution Time elapsed %f sec\n",iElaps);
+        cudaDeviceReset();
     }else{
-    	double iStart = cpuSecond();
+        double iStart = cpuSecond();
 
         detect_overlap(polygon_list, result, n);
 
-	double iElaps = cpuSecond() - iStart;
-	printf("CPU Execution Time elapsed %f sec\n",iElaps);
+        double iElaps = cpuSecond() - iStart;
+        printf("CPU Execution Time elapsed %f sec\n",iElaps);
     }
 
     // 3. print results
