@@ -59,7 +59,11 @@ else
 fi
 
 echo -n "non existing file..."
+<<<<<<< HEAD
 ./sat.out -i ./wtf 2> /dev/null
+=======
+./sat.out -i ./wtf > /dev/null
+>>>>>>> 2f8b7fd7f622def08538960ff0d5ef4ba66320b4
 # should fail due to input file not existing.
 if [ $? -ne 0 ]; then
     echo -e "${GREEN}PASSED${NC}"
@@ -69,6 +73,7 @@ else
 fi
 
 echo -n "test1 nonoverlap..."
+<<<<<<< HEAD
 ./sat.out -i ./testcases/test1_nonoverlap.txt -o ./testcases/tempoutput.txt > /dev/null
 diff ./testcases/test1_nonoverlap_res.txt ./testcases/tempoutput.txt > /dev/null
 if [ $? -eq 0 ]; then
@@ -80,6 +85,9 @@ fi
 
 echo -n "test1 nonoverlap(GPU)..."
 ./sat.out -i ./testcases/test1_nonoverlap.txt -o ./testcases/tempoutput.txt -g > /dev/null
+=======
+./sat.out -i ./testcases/test1_nonoverlap.txt > ./testcases/tempoutput.txt
+>>>>>>> 2f8b7fd7f622def08538960ff0d5ef4ba66320b4
 diff ./testcases/test1_nonoverlap_res.txt ./testcases/tempoutput.txt > /dev/null
 if [ $? -eq 0 ]; then
     echo -e "${GREEN}PASSED${NC}"
@@ -89,6 +97,7 @@ else
 fi
 
 echo -n "test2 overlap..."
+<<<<<<< HEAD
 ./sat.out -i ./testcases/test2_overlap.txt -o ./testcases/tempoutput.txt > /dev/null
 diff ./testcases/test2_overlap_res.txt ./testcases/tempoutput.txt > /dev/null
 if [ $? -eq 0 ]; then
@@ -100,6 +109,9 @@ fi
 
 echo -n "test2 overlap(GPU)..."
 ./sat.out -i ./testcases/test2_overlap.txt -o ./testcases/tempoutput.txt -g > /dev/null
+=======
+./sat.out -i ./testcases/test2_overlap.txt > ./testcases/tempoutput.txt
+>>>>>>> 2f8b7fd7f622def08538960ff0d5ef4ba66320b4
 diff ./testcases/test2_overlap_res.txt ./testcases/tempoutput.txt > /dev/null
 if [ $? -eq 0 ]; then
     echo -e "${GREEN}PASSED${NC}"
@@ -109,6 +121,7 @@ else
 fi
 
 echo -n "test3 nonoverlap..."
+<<<<<<< HEAD
 ./sat.out -i ./testcases/test3_nonoverlap.txt -o ./testcases/tempoutput.txt > /dev/null
 diff ./testcases/test3_nonoverlap_res.txt ./testcases/tempoutput.txt > /dev/null
 if [ $? -eq 0 ]; then
@@ -120,6 +133,9 @@ fi
 
 echo -n "test3 nonoverlap(GPU)..."
 ./sat.out -i ./testcases/test3_nonoverlap.txt -o ./testcases/tempoutput.txt -g > /dev/null
+=======
+./sat.out -i ./testcases/test3_nonoverlap.txt > ./testcases/tempoutput.txt
+>>>>>>> 2f8b7fd7f622def08538960ff0d5ef4ba66320b4
 diff ./testcases/test3_nonoverlap_res.txt ./testcases/tempoutput.txt > /dev/null
 if [ $? -eq 0 ]; then
     echo -e "${GREEN}PASSED${NC}"
