@@ -1,6 +1,7 @@
 #ifndef __SAT_H__
 #define __SAT_H__
 #include "config.h"
+#include <stdio.h>
 
 typedef struct point_t {
     double x;
@@ -25,11 +26,19 @@ typedef struct polygon_t {
 
 extern polygon_t* new_polygon(int n_vertex);
 extern void del_polygon(polygon_t* polygon);
-extern int polygon_print(const polygon_t* polygon);
+extern int polygon_print(FILE* stream, const polygon_t* polygon);
 extern void detect_overlap(polygon_t** polygon_list, int** result, int n);
 extern void detect_overlap_gpu(polygon_t** polygon_list, int** result, int n);
 
 // only for test use
 extern BOOL polygon_is_overlap(const polygon_t* polygon1, const polygon_t* polygon2);
+
+extern void calculate_axes(point_t* vertices_gpu, int n_vertex, int* owner_map_gpu, int* polygon_n_map_gpu,
+                           /*out*/vector_t** p_axes_gpu);
+extern void calculate_projection_endpoints(point_t* vertices_gpu, vector_t* axes_gpu, int* owner_map, int n_vertex,
+                                           /*out*/double** p_projection_endpoints_gpu);
+extern void calculate_projection_segments(double* projection_endpoints_gpu, int* i_polygon_map_gpu, int* polygon_n_map_gpu,
+                                          int n_vertex, int n_polygon, /*out*/projection_t** p_projection_map);
+extern void calculate_is_overlapping(projection_t* projection_map_gpu, int n_vertex, int n_polygon, /*output*/int** p_result);
 
 #endif

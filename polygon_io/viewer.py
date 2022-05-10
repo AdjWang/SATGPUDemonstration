@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+import click
+from random import random
+from collections import Counter
 import matplotlib.pyplot as plt
 from matplotlib.collections import PatchCollection
 from matplotlib.patches import Polygon
-import click
-from random import random
-import numpy as np
 import matplotlib
+from numpy import poly
 matplotlib.use('agg')
 # matplotlib.use('TkAgg')
 
@@ -15,10 +16,16 @@ matplotlib.use('agg')
 class SATPolygon:
     def __init__(self, vertices, overlap_indices) -> None:
         self.polygon = Polygon(vertices, True)
+        self.n_vertex = len(vertices)
         self.overlap_indices = overlap_indices
 
     def has_overlap(self):
         return len(self.overlap_indices) > 0
+
+    def profile(self):
+        n_edge = self.n_vertex
+        n_overlapping = len(self.overlap_indices)
+        return (n_edge, n_overlapping)
 
 
 def load(input_file):
@@ -56,7 +63,7 @@ def draw(polygon_group, output):
             colors.append(random() * 100)
         else:
             colors.append(0.0)
-    print(colors)
+    # print(colors)
 
     p = PatchCollection(patches, alpha=0.15)
     p.set_array(colors)
@@ -68,12 +75,23 @@ def draw(polygon_group, output):
     # plt.show()
 
 
+def profile(polygons):
+    """ Output the statistics profile of the polygons.
+    Metric:
+        counter of n-edge polygon
+        counter of n-overlapping
+    """
+    print(Counter([p.profile() for p in polygons]))
+
+
 @click.command()
 @click.option('--input', type=str, help='Input text file.')
 @click.option('--output', type=str, help='Output png file.')
 def main(input, output):
     print(input, output)
     polygons = load(input)
+
+    profile(polygons)
     draw(polygons, output)
 
 

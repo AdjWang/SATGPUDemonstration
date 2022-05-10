@@ -6,7 +6,7 @@ CC = nvcc
 CFORMAT = cu
 MAIN = main.o
 TEST = test.o
-OBJECTS = sat.o loader.o
+OBJECTS = sat.o loader.o dependence.o
 MAIN_OBJECTS = $(MAIN) $(OBJECTS)
 TEST_OBJECTS = $(TEST) $(OBJECTS)
 
@@ -29,6 +29,9 @@ sat.o: config.h sat.h
 
 loader.o: config.h loader.h sat.h
 	$(CC) -o loader.o $(CFLAGS) -c loader.$(CFORMAT)
+
+dependence.o: dependence.h
+	$(CC) -o dependence.o $(CFLAGS) -c dependence.$(CFORMAT)
 
 .PHONY: clean
 clean:
