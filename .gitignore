@@ -6,3 +6,4 @@
 *.png
 !test*
 !doc/*
+!sm_eff.txt

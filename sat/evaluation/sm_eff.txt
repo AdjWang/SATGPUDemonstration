@@ -1,0 +1,1020 @@
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c50_v6.txt -o polygon_output_gpu.txt -g 2 
+==74042== NVPROF is profiling process 74042, command: ./sat.out -i ./dataset/polygon_input_c50_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 570000
+GPU Execution Time elapsed 0.235426 sec
+==74042== Profiling application: ./sat.out -i ./dataset/polygon_input_c50_v6.txt -o polygon_output_gpu.txt -g 2
+==74042== Profiling result:
+==74042== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity       2.74%       2.74%       2.74%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity       9.92%       9.92%       9.92%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      54.02%      54.02%      54.02%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      11.96%      11.96%      11.96%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c100_v6.txt -o polygon_output_gpu.txt -g 2 
+==74074== NVPROF is profiling process 74074, command: ./sat.out -i ./dataset/polygon_input_c100_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 4670000
+GPU Execution Time elapsed 0.231092 sec
+==74074== Profiling application: ./sat.out -i ./dataset/polygon_input_c100_v6.txt -o polygon_output_gpu.txt -g 2
+==74074== Profiling result:
+==74074== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity       5.08%       5.08%       5.08%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      36.15%      36.15%      36.15%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      87.70%      87.70%      87.70%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      27.37%      27.37%      27.37%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c150_v6.txt -o polygon_output_gpu.txt -g 2 
+==74101== NVPROF is profiling process 74101, command: ./sat.out -i ./dataset/polygon_input_c150_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 15570000
+GPU Execution Time elapsed 0.233089 sec
+==74101== Profiling application: ./sat.out -i ./dataset/polygon_input_c150_v6.txt -o polygon_output_gpu.txt -g 2
+==74101== Profiling result:
+==74101== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity       7.41%       7.41%       7.41%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      58.09%      58.09%      58.09%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      95.47%      95.47%      95.47%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      39.10%      39.10%      39.10%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c200_v6.txt -o polygon_output_gpu.txt -g 2 
+==74122== NVPROF is profiling process 74122, command: ./sat.out -i ./dataset/polygon_input_c200_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 37280000
+GPU Execution Time elapsed 0.229543 sec
+==74122== Profiling application: ./sat.out -i ./dataset/polygon_input_c200_v6.txt -o polygon_output_gpu.txt -g 2
+==74122== Profiling result:
+==74122== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      10.23%      10.23%      10.23%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      66.71%      66.71%      66.71%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      96.85%      96.85%      96.85%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      55.79%      55.79%      55.79%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c250_v6.txt -o polygon_output_gpu.txt -g 2 
+==74143== NVPROF is profiling process 74143, command: ./sat.out -i ./dataset/polygon_input_c250_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 73562500
+GPU Execution Time elapsed 0.237705 sec
+==74143== Profiling application: ./sat.out -i ./dataset/polygon_input_c250_v6.txt -o polygon_output_gpu.txt -g 2
+==74143== Profiling result:
+==74143== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      13.19%      13.19%      13.19%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      81.81%      81.81%      81.81%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.05%      98.05%      98.05%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      65.97%      65.97%      65.97%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c300_v6.txt -o polygon_output_gpu.txt -g 2 
+==74164== NVPROF is profiling process 74164, command: ./sat.out -i ./dataset/polygon_input_c300_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 125820000
+GPU Execution Time elapsed 0.238146 sec
+==74164== Profiling application: ./sat.out -i ./dataset/polygon_input_c300_v6.txt -o polygon_output_gpu.txt -g 2
+==74164== Profiling result:
+==74164== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      14.37%      14.37%      14.37%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      88.61%      88.61%      88.61%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      97.64%      97.64%      97.64%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      81.19%      81.19%      81.19%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c350_v6.txt -o polygon_output_gpu.txt -g 2 
+==74185== NVPROF is profiling process 74185, command: ./sat.out -i ./dataset/polygon_input_c350_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 198082500
+GPU Execution Time elapsed 0.234370 sec
+==74185== Profiling application: ./sat.out -i ./dataset/polygon_input_c350_v6.txt -o polygon_output_gpu.txt -g 2
+==74185== Profiling result:
+==74185== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      17.16%      17.16%      17.16%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      88.06%      88.06%      88.06%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.24%      98.24%      98.24%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      83.34%      83.34%      83.34%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c400_v6.txt -o polygon_output_gpu.txt -g 2 
+==74206== NVPROF is profiling process 74206, command: ./sat.out -i ./dataset/polygon_input_c400_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 296480000
+GPU Execution Time elapsed 0.237423 sec
+==74206== Profiling application: ./sat.out -i ./dataset/polygon_input_c400_v6.txt -o polygon_output_gpu.txt -g 2
+==74206== Profiling result:
+==74206== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      19.31%      19.31%      19.31%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      90.70%      90.70%      90.70%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.02%      98.02%      98.02%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      86.59%      86.59%      86.59%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c450_v6.txt -o polygon_output_gpu.txt -g 2 
+==74227== NVPROF is profiling process 74227, command: ./sat.out -i ./dataset/polygon_input_c450_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 425047500
+GPU Execution Time elapsed 0.264620 sec
+==74227== Profiling application: ./sat.out -i ./dataset/polygon_input_c450_v6.txt -o polygon_output_gpu.txt -g 2
+==74227== Profiling result:
+==74227== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      22.89%      22.89%      22.89%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      93.50%      93.50%      93.50%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.55%      98.55%      98.55%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      90.20%      90.20%      90.20%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c500_v6.txt -o polygon_output_gpu.txt -g 2 
+==74248== NVPROF is profiling process 74248, command: ./sat.out -i ./dataset/polygon_input_c500_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 588250000
+GPU Execution Time elapsed 0.249058 sec
+==74248== Profiling application: ./sat.out -i ./dataset/polygon_input_c500_v6.txt -o polygon_output_gpu.txt -g 2
+==74248== Profiling result:
+==74248== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      27.10%      27.10%      27.10%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      94.36%      94.36%      94.36%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      97.46%      97.46%      97.46%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      91.28%      91.28%      91.28%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c550_v6.txt -o polygon_output_gpu.txt -g 2 
+==74269== NVPROF is profiling process 74269, command: ./sat.out -i ./dataset/polygon_input_c550_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 780147500
+GPU Execution Time elapsed 0.233348 sec
+==74269== Profiling application: ./sat.out -i ./dataset/polygon_input_c550_v6.txt -o polygon_output_gpu.txt -g 2
+==74269== Profiling result:
+==74269== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      26.31%      26.31%      26.31%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      96.61%      96.61%      96.61%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.19%      99.19%      99.19%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      92.69%      92.69%      92.69%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c600_v6.txt -o polygon_output_gpu.txt -g 2 
+==74290== NVPROF is profiling process 74290, command: ./sat.out -i ./dataset/polygon_input_c600_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 1005480000
+GPU Execution Time elapsed 0.235895 sec
+==74290== Profiling application: ./sat.out -i ./dataset/polygon_input_c600_v6.txt -o polygon_output_gpu.txt -g 2
+==74290== Profiling result:
+==74290== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      28.87%      28.87%      28.87%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      96.25%      96.25%      96.25%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.16%      98.16%      98.16%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      93.81%      93.81%      93.81%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c650_v6.txt -o polygon_output_gpu.txt -g 2 
+==74311== NVPROF is profiling process 74311, command: ./sat.out -i ./dataset/polygon_input_c650_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 1287780000
+GPU Execution Time elapsed 0.233004 sec
+==74311== Profiling application: ./sat.out -i ./dataset/polygon_input_c650_v6.txt -o polygon_output_gpu.txt -g 2
+==74311== Profiling result:
+==74311== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      26.36%      26.36%      26.36%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      97.17%      97.17%      97.17%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.33%      98.33%      98.33%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      94.68%      94.68%      94.68%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c700_v6.txt -o polygon_output_gpu.txt -g 2 
+==74332== NVPROF is profiling process 74332, command: ./sat.out -i ./dataset/polygon_input_c700_v6.txt -o polygon_output_gpu.txt -g 2
+==74332== kernel num: 1606710000
+GPU Execution Time elapsed 0.239608 sec
+Profiling application: ./sat.out -i ./dataset/polygon_input_c700_v6.txt -o polygon_output_gpu.txt -g 2
+==74332== Profiling result:
+==74332== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      27.48%      27.48%      27.48%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      97.39%      97.39%      97.39%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      97.50%      97.50%      97.50%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      94.86%      94.86%      94.86%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c750_v6.txt -o polygon_output_gpu.txt -g 2 
+==74356== NVPROF is profiling process 74356, command: ./sat.out -i ./dataset/polygon_input_c750_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 1972687500
+GPU Execution Time elapsed 0.273684 sec
+==74356== Profiling application: ./sat.out -i ./dataset/polygon_input_c750_v6.txt -o polygon_output_gpu.txt -g 2
+==74356== Profiling result:
+==74356== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      27.11%      27.11%      27.11%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.16%      98.16%      98.16%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.61%      98.61%      98.61%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      95.83%      95.83%      95.83%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c800_v6.txt -o polygon_output_gpu.txt -g 2 
+==74377== NVPROF is profiling process 74377, command: ./sat.out -i ./dataset/polygon_input_c800_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 14040009
+GPU Execution Time elapsed 0.262862 sec
+==74377== Profiling application: ./sat.out -i ./dataset/polygon_input_c800_v6.txt -o polygon_output_gpu.txt -g 2
+==74377== Profiling result:
+==74377== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      28.51%      28.51%      28.51%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.00%      98.00%      98.00%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.40%      98.40%      98.40%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      96.23%      96.23%      96.23%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c850_v6.txt -o polygon_output_gpu.txt -g 2 
+==74398== NVPROF is profiling process 74398, command: ./sat.out -i ./dataset/polygon_input_c850_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 16008001
+GPU Execution Time elapsed 0.267148 sec
+==74398== Profiling application: ./sat.out -i ./dataset/polygon_input_c850_v6.txt -o polygon_output_gpu.txt -g 2
+==74398== Profiling result:
+==74398== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      26.74%      26.74%      26.74%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.67%      98.67%      98.67%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.61%      98.61%      98.61%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      96.64%      96.64%      96.64%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c900_v6.txt -o polygon_output_gpu.txt -g 2 
+==74419== NVPROF is profiling process 74419, command: ./sat.out -i ./dataset/polygon_input_c900_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 17715681
+GPU Execution Time elapsed 0.271411 sec
+==74419== Profiling application: ./sat.out -i ./dataset/polygon_input_c900_v6.txt -o polygon_output_gpu.txt -g 2
+==74419== Profiling result:
+==74419== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      29.07%      29.07%      29.07%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.88%      98.88%      98.88%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.11%      98.11%      98.11%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      96.84%      96.84%      96.84%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c950_v6.txt -o polygon_output_gpu.txt -g 2 
+==74440== NVPROF is profiling process 74440, command: ./sat.out -i ./dataset/polygon_input_c950_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 19811401
+GPU Execution Time elapsed 0.276971 sec
+==74440== Profiling application: ./sat.out -i ./dataset/polygon_input_c950_v6.txt -o polygon_output_gpu.txt -g 2
+==74440== Profiling result:
+==74440== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      26.72%      26.72%      26.72%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.63%      98.63%      98.63%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.10%      99.10%      99.10%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      97.51%      97.51%      97.51%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c1000_v6.txt -o polygon_output_gpu.txt -g 2 
+==74461== NVPROF is profiling process 74461, command: ./sat.out -i ./dataset/polygon_input_c1000_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 383032704
+GPU Execution Time elapsed 0.289367 sec
+==74461== Profiling application: ./sat.out -i ./dataset/polygon_input_c1000_v6.txt -o polygon_output_gpu.txt -g 2
+==74461== Profiling result:
+==74461== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      27.87%      27.87%      27.87%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.81%      98.81%      98.81%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.28%      98.28%      98.28%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      97.63%      97.63%      97.63%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c1050_v6.txt -o polygon_output_gpu.txt -g 2 
+==74482== NVPROF is profiling process 74482, command: ./sat.out -i ./dataset/polygon_input_c1050_v6.txt -o polygon_output_gpu.txt -g 2
+==74482== kernel num: 1080822704
+GPU Execution Time elapsed 0.295805 sec
+Profiling application: ./sat.out -i ./dataset/polygon_input_c1050_v6.txt -o polygon_output_gpu.txt -g 2
+==74482== Profiling result:
+==74482== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      29.95%      29.95%      29.95%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.78%      98.78%      98.78%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.10%      99.10%      99.10%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      97.41%      97.41%      97.41%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c1100_v6.txt -o polygon_output_gpu.txt -g 2 
+==74504== NVPROF is profiling process 74504, command: ./sat.out -i ./dataset/polygon_input_c1100_v6.txt -o polygon_output_gpu.txt -g 2
+==74504== kernel num: 1936532704
+GPU Execution Time elapsed 0.302960 sec
+Profiling application: ./sat.out -i ./dataset/polygon_input_c1100_v6.txt -o polygon_output_gpu.txt -g 2
+==74504== Profiling result:
+==74504== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      28.77%      28.77%      28.77%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.19%      99.19%      99.19%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.25%      99.25%      99.25%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      97.82%      97.82%      97.82%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c1150_v6.txt -o polygon_output_gpu.txt -g 2 
+==74525== NVPROF is profiling process 74525, command: ./sat.out -i ./dataset/polygon_input_c1150_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 29170801
+GPU Execution Time elapsed 0.309729 sec
+==74525== Profiling application: ./sat.out -i ./dataset/polygon_input_c1150_v6.txt -o polygon_output_gpu.txt -g 2
+==74525== Profiling result:
+==74525== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      26.59%      26.59%      26.59%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.98%      98.98%      98.98%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.90%      98.90%      98.90%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.39%      98.39%      98.39%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c1200_v6.txt -o polygon_output_gpu.txt -g 2 
+==74546== NVPROF is profiling process 74546, command: ./sat.out -i ./dataset/polygon_input_c1200_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 31315216
+GPU Execution Time elapsed 0.318070 sec
+==74546== Profiling application: ./sat.out -i ./dataset/polygon_input_c1200_v6.txt -o polygon_output_gpu.txt -g 2
+==74546== Profiling result:
+==74546== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      30.28%      30.28%      30.28%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.26%      99.26%      99.26%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.58%      98.58%      98.58%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.09%      98.09%      98.09%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c1250_v6.txt -o polygon_output_gpu.txt -g 2 
+==74567== NVPROF is profiling process 74567, command: ./sat.out -i ./dataset/polygon_input_c1250_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 558502908
+GPU Execution Time elapsed 0.321931 sec
+==74567== Profiling application: ./sat.out -i ./dataset/polygon_input_c1250_v6.txt -o polygon_output_gpu.txt -g 2
+==74567== Profiling result:
+==74567== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      29.40%      29.40%      29.40%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.20%      99.20%      99.20%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.89%      98.89%      98.89%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.44%      98.44%      98.44%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c1300_v6.txt -o polygon_output_gpu.txt -g 2 
+==74588== NVPROF is profiling process 74588, command: ./sat.out -i ./dataset/polygon_input_c1300_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 1654845408
+GPU Execution Time elapsed 0.342769 sec
+==74588== Profiling application: ./sat.out -i ./dataset/polygon_input_c1300_v6.txt -o polygon_output_gpu.txt -g 2
+==74588== Profiling result:
+==74588== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      26.57%      26.57%      26.57%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.42%      99.42%      99.42%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.81%      98.81%      98.81%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.42%      98.42%      98.42%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c1350_v6.txt -o polygon_output_gpu.txt -g 2 
+==74609== NVPROF is profiling process 74609, command: ./sat.out -i ./dataset/polygon_input_c1350_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 39438400
+GPU Execution Time elapsed 0.357630 sec
+==74609== Profiling application: ./sat.out -i ./dataset/polygon_input_c1350_v6.txt -o polygon_output_gpu.txt -g 2
+==74609== Profiling result:
+==74609== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      26.82%      26.82%      26.82%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.61%      99.61%      99.61%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.25%      99.25%      99.25%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.37%      98.37%      98.37%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c1400_v6.txt -o polygon_output_gpu.txt -g 2 
+==74630== NVPROF is profiling process 74630, command: ./sat.out -i ./dataset/polygon_input_c1400_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 42810849
+GPU Execution Time elapsed 0.364205 sec
+==74630== Profiling application: ./sat.out -i ./dataset/polygon_input_c1400_v6.txt -o polygon_output_gpu.txt -g 2
+==74630== Profiling result:
+==74630== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      27.28%      27.28%      27.28%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.45%      99.45%      99.45%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.69%      98.69%      98.69%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.58%      98.58%      98.58%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c1450_v6.txt -o polygon_output_gpu.txt -g 2 
+==74651== NVPROF is profiling process 74651, command: ./sat.out -i ./dataset/polygon_input_c1450_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 1391073112
+GPU Execution Time elapsed 0.390943 sec
+==74651== Profiling application: ./sat.out -i ./dataset/polygon_input_c1450_v6.txt -o polygon_output_gpu.txt -g 2
+==74651== Profiling result:
+==74651== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      27.47%      27.47%      27.47%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.56%      99.56%      99.56%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.08%      99.08%      99.08%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.74%      98.74%      98.74%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c1500_v6.txt -o polygon_output_gpu.txt -g 2 
+==74672== NVPROF is profiling process 74672, command: ./sat.out -i ./dataset/polygon_input_c1500_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 50083929
+GPU Execution Time elapsed 0.389487 sec
+==74672== Profiling application: ./sat.out -i ./dataset/polygon_input_c1500_v6.txt -o polygon_output_gpu.txt -g 2
+==74672== Profiling result:
+==74672== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      27.34%      27.34%      27.34%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.44%      99.44%      99.44%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.99%      98.99%      98.99%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.95%      98.95%      98.95%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c1550_v6.txt -o polygon_output_gpu.txt -g 2 
+==74695== NVPROF is profiling process 74695, command: ./sat.out -i ./dataset/polygon_input_c1550_v6.txt -o polygon_output_gpu.txt -g 2
+==74695== kernel num: 204620816
+GPU Execution Time elapsed 0.407892 sec
+Profiling application: ./sat.out -i ./dataset/polygon_input_c1550_v6.txt -o polygon_output_gpu.txt -g 2
+==74695== Profiling result:
+==74695== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      27.22%      27.22%      27.22%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.63%      99.63%      99.63%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.17%      99.17%      99.17%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.79%      98.79%      98.79%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c1600_v6.txt -o polygon_output_gpu.txt -g 2 
+==74716== NVPROF is profiling process 74716, command: ./sat.out -i ./dataset/polygon_input_c1600_v6.txt -o polygon_output_gpu.txt -g 2
+==74716== kernel num: 2025250816
+GPU Execution Time elapsed 0.415091 sec
+Profiling application: ./sat.out -i ./dataset/polygon_input_c1600_v6.txt -o polygon_output_gpu.txt -g 2
+==74716== Profiling result:
+==74716== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      27.06%      27.06%      27.06%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.49%      99.49%      99.49%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.51%      98.51%      98.51%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.90%      98.90%      98.90%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c1650_v6.txt -o polygon_output_gpu.txt -g 2 
+==74737== NVPROF is profiling process 74737, command: ./sat.out -i ./dataset/polygon_input_c1650_v6.txt -o polygon_output_gpu.txt -g 2
+==74737== kernel num: 59567524
+GPU Execution Time elapsed 0.440482 sec
+Profiling application: ./sat.out -i ./dataset/polygon_input_c1650_v6.txt -o polygon_output_gpu.txt -g 2
+==74737== Profiling result:
+==74737== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      27.92%      27.92%      27.92%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.64%      99.64%      99.64%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.31%      99.31%      99.31%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.97%      98.97%      98.97%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c1700_v6.txt -o polygon_output_gpu.txt -g 2 
+==74758== NVPROF is profiling process 74758, command: ./sat.out -i ./dataset/polygon_input_c1700_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 1575803520
+GPU Execution Time elapsed 0.441557 sec
+==74758== Profiling application: ./sat.out -i ./dataset/polygon_input_c1700_v6.txt -o polygon_output_gpu.txt -g 2
+==74758== Profiling result:
+==74758== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      26.72%      26.72%      26.72%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.77%      99.77%      99.77%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.00%      99.00%      99.00%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.01%      99.01%      99.01%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c1750_v6.txt -o polygon_output_gpu.txt -g 2 
+==74779== NVPROF is profiling process 74779, command: ./sat.out -i ./dataset/polygon_input_c1750_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 67404100
+GPU Execution Time elapsed 0.500463 sec
+==74779== Profiling application: ./sat.out -i ./dataset/polygon_input_c1750_v6.txt -o polygon_output_gpu.txt -g 2
+==74779== Profiling result:
+==74779== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      26.86%      26.86%      26.86%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.65%      99.65%      99.65%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.30%      99.30%      99.30%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.14%      99.14%      99.14%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c1800_v6.txt -o polygon_output_gpu.txt -g 2 
+==74800== NVPROF is profiling process 74800, command: ./sat.out -i ./dataset/polygon_input_c1800_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 1562836224
+GPU Execution Time elapsed 0.489479 sec
+==74800== Profiling application: ./sat.out -i ./dataset/polygon_input_c1800_v6.txt -o polygon_output_gpu.txt -g 2
+==74800== Profiling result:
+==74800== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      26.81%      26.81%      26.81%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.71%      99.71%      99.71%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.85%      98.85%      98.85%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.99%      98.99%      98.99%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c1850_v6.txt -o polygon_output_gpu.txt -g 2 
+==74821== NVPROF is profiling process 74821, command: ./sat.out -i ./dataset/polygon_input_c1850_v6.txt -o polygon_output_gpu.txt -g 2
+==74821== kernel num: 74701449
+GPU Execution Time elapsed 0.503601 sec
+Profiling application: ./sat.out -i ./dataset/polygon_input_c1850_v6.txt -o polygon_output_gpu.txt -g 2
+==74821== Profiling result:
+==74821== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      26.85%      26.85%      26.85%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.61%      99.61%      99.61%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.35%      99.35%      99.35%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.31%      99.31%      99.31%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c1900_v6.txt -o polygon_output_gpu.txt -g 2 
+==74842== NVPROF is profiling process 74842, command: ./sat.out -i ./dataset/polygon_input_c1900_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 2064228928
+GPU Execution Time elapsed 0.520559 sec
+==74842== Profiling application: ./sat.out -i ./dataset/polygon_input_c1900_v6.txt -o polygon_output_gpu.txt -g 2
+==74842== Profiling result:
+==74842== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      27.11%      27.11%      27.11%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.71%      99.71%      99.71%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.04%      99.04%      99.04%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.17%      99.17%      99.17%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c1950_v6.txt -o polygon_output_gpu.txt -g 2 
+==74863== NVPROF is profiling process 74863, command: ./sat.out -i ./dataset/polygon_input_c1950_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 524396632
+GPU Execution Time elapsed 0.566878 sec
+==74863== Profiling application: ./sat.out -i ./dataset/polygon_input_c1950_v6.txt -o polygon_output_gpu.txt -g 2
+==74863== Profiling result:
+==74863== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      27.45%      27.45%      27.45%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.65%      99.65%      99.65%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.16%      99.16%      99.16%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.38%      99.38%      99.38%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c2000_v6.txt -o polygon_output_gpu.txt -g 2 
+==74884== NVPROF is profiling process 74884, command: ./sat.out -i ./dataset/polygon_input_c2000_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 87459904
+GPU Execution Time elapsed 0.564377 sec
+==74884== Profiling application: ./sat.out -i ./dataset/polygon_input_c2000_v6.txt -o polygon_output_gpu.txt -g 2
+==74884== Profiling result:
+==74884== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      27.40%      27.40%      27.40%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.68%      99.68%      99.68%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.39%      98.39%      98.39%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.24%      99.24%      99.24%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c2050_v6.txt -o polygon_output_gpu.txt -g 2 
+==74905== NVPROF is profiling process 74905, command: ./sat.out -i ./dataset/polygon_input_c2050_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 1756534336
+GPU Execution Time elapsed 0.605034 sec
+==74905== Profiling application: ./sat.out -i ./dataset/polygon_input_c2050_v6.txt -o polygon_output_gpu.txt -g 2
+==74905== Profiling result:
+==74905== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      26.66%      26.66%      26.66%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.75%      99.75%      99.75%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.04%      99.04%      99.04%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.19%      99.19%      99.19%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c2100_v6.txt -o polygon_output_gpu.txt -g 2 
+==74926== NVPROF is profiling process 74926, command: ./sat.out -i ./dataset/polygon_input_c2100_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 453547040
+GPU Execution Time elapsed 0.607383 sec
+==74926== Profiling application: ./sat.out -i ./dataset/polygon_input_c2100_v6.txt -o polygon_output_gpu.txt -g 2
+==74926== Profiling result:
+==74926== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      26.53%      26.53%      26.53%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.75%      99.75%      99.75%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.99%      98.99%      98.99%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.45%      99.45%      99.45%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c2150_v6.txt -o polygon_output_gpu.txt -g 2 
+==74947== NVPROF is profiling process 74947, command: ./sat.out -i ./dataset/polygon_input_c2150_v6.txt -o polygon_output_gpu.txt -g 2
+==74947== kernel num: 101042704
+GPU Execution Time elapsed 0.682036 sec
+Profiling application: ./sat.out -i ./dataset/polygon_input_c2150_v6.txt -o polygon_output_gpu.txt -g 2
+==74947== Profiling result:
+==74947== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      26.77%      26.77%      26.77%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.81%      99.81%      99.81%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.72%      99.72%      99.72%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.26%      99.26%      99.26%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c2200_v6.txt -o polygon_output_gpu.txt -g 2 
+==74968== NVPROF is profiling process 74968, command: ./sat.out -i ./dataset/polygon_input_c2200_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 106523041
+GPU Execution Time elapsed 0.699313 sec
+==74968== Profiling application: ./sat.out -i ./dataset/polygon_input_c2200_v6.txt -o polygon_output_gpu.txt -g 2
+==74968== Profiling result:
+==74968== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      26.89%      26.89%      26.89%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.77%      99.77%      99.77%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.39%      99.39%      99.39%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.43%      99.43%      99.43%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c2250_v6.txt -o polygon_output_gpu.txt -g 2 
+==74989== NVPROF is profiling process 74989, command: ./sat.out -i ./dataset/polygon_input_c2250_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 1935579948
+GPU Execution Time elapsed 0.723187 sec
+==74989== Profiling application: ./sat.out -i ./dataset/polygon_input_c2250_v6.txt -o polygon_output_gpu.txt -g 2
+==74989== Profiling result:
+==74989== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      27.96%      27.96%      27.96%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.82%      99.82%      99.82%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.28%      99.28%      99.28%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.47%      99.47%      99.47%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c2300_v6.txt -o polygon_output_gpu.txt -g 2 
+==75010== NVPROF is profiling process 75010, command: ./sat.out -i ./dataset/polygon_input_c2300_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 1223365152
+GPU Execution Time elapsed 0.746068 sec
+==75010== Profiling application: ./sat.out -i ./dataset/polygon_input_c2300_v6.txt -o polygon_output_gpu.txt -g 2
+==75010== Profiling result:
+==75010== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      27.49%      27.49%      27.49%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.79%      99.79%      99.79%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.16%      99.16%      99.16%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.54%      99.54%      99.54%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c2350_v6.txt -o polygon_output_gpu.txt -g 2 
+==75031== NVPROF is profiling process 75031, command: ./sat.out -i ./dataset/polygon_input_c2350_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 170635356
+GPU Execution Time elapsed 0.751045 sec
+==75031== Profiling application: ./sat.out -i ./dataset/polygon_input_c2350_v6.txt -o polygon_output_gpu.txt -g 2
+==75031== Profiling result:
+==75031== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      27.16%      27.16%      27.16%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.82%      99.82%      99.82%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.26%      99.26%      99.26%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.56%      99.56%      99.56%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c2400_v6.txt -o polygon_output_gpu.txt -g 2 
+==75052== NVPROF is profiling process 75052, command: ./sat.out -i ./dataset/polygon_input_c2400_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 243010560
+GPU Execution Time elapsed 0.764886 sec
+==75052== Profiling application: ./sat.out -i ./dataset/polygon_input_c2400_v6.txt -o polygon_output_gpu.txt -g 2
+==75052== Profiling result:
+==75052== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      26.77%      26.77%      26.77%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.73%      99.73%      99.73%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.59%      98.59%      98.59%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.52%      99.52%      99.52%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c2450_v6.txt -o polygon_output_gpu.txt -g 2 
+==75073== NVPROF is profiling process 75073, command: ./sat.out -i ./dataset/polygon_input_c2450_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 195225764
+GPU Execution Time elapsed 0.839201 sec
+==75073== Profiling application: ./sat.out -i ./dataset/polygon_input_c2450_v6.txt -o polygon_output_gpu.txt -g 2
+==75073== Profiling result:
+==75073== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      27.21%      27.21%      27.21%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.82%      99.82%      99.82%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.36%      99.36%      99.36%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.55%      99.55%      99.55%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c2500_v6.txt -o polygon_output_gpu.txt -g 2 
+==75097== NVPROF is profiling process 75097, command: ./sat.out -i ./dataset/polygon_input_c2500_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 134397649
+GPU Execution Time elapsed 0.845523 sec
+==75097== Profiling application: ./sat.out -i ./dataset/polygon_input_c2500_v6.txt -o polygon_output_gpu.txt -g 2
+==75097== Profiling result:
+==75097== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      27.11%      27.11%      27.11%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.86%      99.86%      99.86%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.14%      99.14%      99.14%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.61%      99.61%      99.61%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c2550_v6.txt -o polygon_output_gpu.txt -g 2 
+==75118== NVPROF is profiling process 75118, command: ./sat.out -i ./dataset/polygon_input_c2550_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 141134400
+GPU Execution Time elapsed 0.908681 sec
+==75118== Profiling application: ./sat.out -i ./dataset/polygon_input_c2550_v6.txt -o polygon_output_gpu.txt -g 2
+==75118== Profiling result:
+==75118== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      27.39%      27.39%      27.39%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.85%      99.85%      99.85%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.18%      99.18%      99.18%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.45%      99.45%      99.45%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c2600_v6.txt -o polygon_output_gpu.txt -g 2 
+==75139== NVPROF is profiling process 75139, command: ./sat.out -i ./dataset/polygon_input_c2600_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 353861376
+GPU Execution Time elapsed 0.917452 sec
+==75139== Profiling application: ./sat.out -i ./dataset/polygon_input_c2600_v6.txt -o polygon_output_gpu.txt -g 2
+==75139== Profiling result:
+==75139== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      16.19%      16.19%      16.19%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.83%      99.83%      99.83%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.85%      98.85%      98.85%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.40%      99.40%      99.40%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c2650_v6.txt -o polygon_output_gpu.txt -g 2 
+==75160== NVPROF is profiling process 75160, command: ./sat.out -i ./dataset/polygon_input_c2650_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 1544824080
+GPU Execution Time elapsed 1.007901 sec
+==75160== Profiling application: ./sat.out -i ./dataset/polygon_input_c2650_v6.txt -o polygon_output_gpu.txt -g 2
+==75160== Profiling result:
+==75160== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      29.48%      29.48%      29.48%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.83%      99.83%      99.83%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.53%      99.53%      99.53%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.52%      99.52%      99.52%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c2700_v6.txt -o polygon_output_gpu.txt -g 2 
+==75181== NVPROF is profiling process 75181, command: ./sat.out -i ./dataset/polygon_input_c2700_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 1827356784
+GPU Execution Time elapsed 1.022098 sec
+==75181== Profiling application: ./sat.out -i ./dataset/polygon_input_c2700_v6.txt -o polygon_output_gpu.txt -g 2
+==75181== Profiling result:
+==75181== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      29.69%      29.69%      29.69%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.87%      99.87%      99.87%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.16%      99.16%      99.16%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.68%      99.68%      99.68%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c2750_v6.txt -o polygon_output_gpu.txt -g 2 
+==75203== NVPROF is profiling process 75203, command: ./sat.out -i ./dataset/polygon_input_c2750_v6.txt -o polygon_output_gpu.txt -g 2
+==75203== kernel num: 166978084
+GPU Execution Time elapsed 1.083718 sec
+Profiling application: ./sat.out -i ./dataset/polygon_input_c2750_v6.txt -o polygon_output_gpu.txt -g 2
+==75203== Profiling result:
+==75203== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      28.77%      28.77%      28.77%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.87%      99.87%      99.87%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.07%      99.07%      99.07%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.61%      99.61%      99.61%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c2800_v6.txt -o polygon_output_gpu.txt -g 2 
+==75224== NVPROF is profiling process 75224, command: ./sat.out -i ./dataset/polygon_input_c2800_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 173054025
+GPU Execution Time elapsed 1.071532 sec
+==75224== Profiling application: ./sat.out -i ./dataset/polygon_input_c2800_v6.txt -o polygon_output_gpu.txt -g 2
+==75224== Profiling result:
+==75224== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      28.43%      28.43%      28.43%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.87%      99.87%      99.87%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.65%      98.65%      98.65%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.68%      99.68%      99.68%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c2850_v6.txt -o polygon_output_gpu.txt -g 2 
+==75245== NVPROF is profiling process 75245, command: ./sat.out -i ./dataset/polygon_input_c2850_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 963722600
+GPU Execution Time elapsed 1.174765 sec
+==75245== Profiling application: ./sat.out -i ./dataset/polygon_input_c2850_v6.txt -o polygon_output_gpu.txt -g 2
+==75245== Profiling result:
+==75245== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      28.00%      28.00%      28.00%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.84%      99.84%      99.84%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.06%      99.06%      99.06%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.63%      99.63%      99.63%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c2900_v6.txt -o polygon_output_gpu.txt -g 2 
+==75266== NVPROF is profiling process 75266, command: ./sat.out -i ./dataset/polygon_input_c2900_v6.txt -o polygon_output_gpu.txt -g 2
+==75266== kernel num: 185695129
+GPU Execution Time elapsed 1.204406 sec
+Profiling application: ./sat.out -i ./dataset/polygon_input_c2900_v6.txt -o polygon_output_gpu.txt -g 2
+==75266== Profiling result:
+==75266== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      29.22%      29.22%      29.22%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.88%      99.88%      99.88%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.13%      99.13%      99.13%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.68%      99.68%      99.68%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c2950_v6.txt -o polygon_output_gpu.txt -g 2 
+==75289== NVPROF is profiling process 75289, command: ./sat.out -i ./dataset/polygon_input_c2950_v6.txt -o polygon_output_gpu.txt -g 2
+==75289== kernel num: 190633249
+GPU Execution Time elapsed 1.277055 sec
+Profiling application: ./sat.out -i ./dataset/polygon_input_c2950_v6.txt -o polygon_output_gpu.txt -g 2
+==75289== Profiling result:
+==75289== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      28.92%      28.92%      28.92%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.89%      99.89%      99.89%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.47%      99.47%      99.47%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.67%      99.67%      99.67%
+nvprof --metrics sm_efficiency ./sat.out -i ./dataset/polygon_input_c3000_v6.txt -o polygon_output_gpu.txt -g 2 
+==75310== NVPROF is profiling process 75310, command: ./sat.out -i ./dataset/polygon_input_c3000_v6.txt -o polygon_output_gpu.txt -g 2
+kernel num: 1535948416
+GPU Execution Time elapsed 1.259807 sec
+==75310== Profiling application: ./sat.out -i ./dataset/polygon_input_c3000_v6.txt -o polygon_output_gpu.txt -g 2
+==75310== Profiling result:
+==75310== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "Tesla V100-PCIE-16GB (0)"
+    Kernel: kernel_get_axis(point_t*, int, int*, int*, vector_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      27.77%      27.77%      27.77%
+    Kernel: kernel_get_projection_segments(double*, int*, int*, int, int, projection_t*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.86%      99.86%      99.86%
+    Kernel: kernel_get_overlapping(projection_t*, int, int, int*)
+          1                             sm_efficiency                   Multiprocessor Activity      98.83%      98.83%      98.83%
+    Kernel: kernel_get_projection_endpoints(point_t*, vector_t*, int*, int, double*)
+          1                             sm_efficiency                   Multiprocessor Activity      99.69%      99.69%      99.69%
