@@ -26,12 +26,16 @@ Before running the program, you need to build up environment first:
 
 - python
 
-   needs python>=3.8, pipenv
+    Python is used to generage/view input data or parse/view output data, you can skip this step if you already have the dataset and only need to run SAT algorithm in cmdline and don't want to view the graphic result.
 
-   ```bash
-   cd polygon_io
-   pipenv install
-   ```
+    1. install python>=3.8, pipenv
+
+    2. use pipenv to build up python env
+
+        ```bash
+        cd polygon_io
+        pipenv install
+        ```
 
 - cuda
 
