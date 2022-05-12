@@ -1,6 +1,6 @@
 # SAT GPU implemention demo
 
-An SAT(Seperating Axis Theorem) implementation on CPU and GPU.
+A SAT(Seperating Axis Theorem) implementation on CPU and GPU.
 
 Directories:
 
