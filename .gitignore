@@ -4,6 +4,4 @@
 *.stackdump
 *.txt
 *.png
-dataset/
-dataset*
 !test*
