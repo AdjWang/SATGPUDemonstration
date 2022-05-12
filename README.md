@@ -26,7 +26,7 @@ Before running the program, you need to build up environment first:
 
 - python
 
-   Need python>=3.8, pipenv
+   needs python>=3.8, pipenv
 
    ```bash
    cd polygon_io
@@ -34,6 +34,14 @@ Before running the program, you need to build up environment first:
    ```
 
 - cuda
+
+    ```bash
+    $ nvcc --version
+    nvcc: NVIDIA (R) Cuda compiler driver
+    Copyright (c) 2005-2019 NVIDIA Corporation
+    Built on Wed_Oct_23_19:24:38_PDT_2019
+    Cuda compilation tools, release 10.2, V10.2.89
+    ```
 
 This project was evaluated on a machine with Intel Xeon Processor (Skylake, IBRS) and Tesla V100.
 
