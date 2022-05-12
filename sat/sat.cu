@@ -376,11 +376,12 @@ void calculate_axes(point_t* vertices_gpu, int n_vertex, int* owner_map_gpu, int
     // calculate on the device
     CHECK(cudaMalloc(p_axes_gpu, n_vertex * sizeof(vector_t)));
 
-    const int dimx = 4;
+    const int dimx = 32;
     dim3 block(dimx);
     dim3 grid((n_vertex - 1)/block.x + 1);
 
     kernel_get_axis<<<grid, block>>>(vertices_gpu, n_vertex, owner_map_gpu, polygon_n_map_gpu, *p_axes_gpu);
+    CHECK(cudaGetLastError());
     CHECK(cudaDeviceSynchronize());
 }
 
@@ -420,13 +421,14 @@ void calculate_projection_endpoints(point_t* vertices_gpu, vector_t* axes_gpu, i
     // all projection endpoints of vertices and axes, not [min, max] segment
     CHECK(cudaMalloc(p_projection_endpoints_gpu, n_vertex*n_vertex * sizeof(double)));
 
-    const int dimx = 4;
-    const int dimy = 4;
+    const int dimx = 32;
+    const int dimy = 32;
     dim3 block(dimx, dimy);
     dim3 grid((n_vertex - 1)/block.x + 1, (n_vertex - 1)/block.y + 1);
 
     // printf("%d\n", n_vertex);
     kernel_get_projection_endpoints<<<grid, block>>>(vertices_gpu, axes_gpu, owner_map_gpu, n_vertex, /*out*/*p_projection_endpoints_gpu);
+    CHECK(cudaGetLastError());
     CHECK(cudaDeviceSynchronize());
 }
 
@@ -476,12 +478,13 @@ void calculate_projection_segments(double* projection_endpoints_gpu, int* i_poly
 
     CHECK(cudaMalloc(p_projection_map, n_vertex*n_polygon * sizeof(projection_t)));
 
-    const int dimx = 4;
-    const int dimy = 4;
+    const int dimx = 32;
+    const int dimy = 32;
     dim3 block(dimx, dimy);
     dim3 grid((n_vertex - 1)/block.x + 1, (n_polygon - 1)/block.y + 1);
 
     kernel_get_projection_segments<<<grid, block>>>(projection_endpoints_gpu, i_polygon_map_gpu, polygon_n_map_gpu, n_vertex, n_polygon, *p_projection_map);
+    CHECK(cudaGetLastError());
     CHECK(cudaDeviceSynchronize());
 }
 
@@ -522,11 +525,13 @@ void calculate_is_overlapping(projection_t* projection_map_gpu, int n_vertex, in
 
     const int dimx = 4;
     const int dimy = 4;
-    const int dimz = 4;
+    const int dimz = 64;
     dim3 block(dimx, dimy, dimz);
     dim3 grid((n_polygon - 1)/block.x + 1, (n_polygon - 1)/block.y + 1, (n_vertex - 1)/block.z + 1);
+    // printf("grid (%d, %d, %d)\n", grid.x, grid.y, grid.z);
 
     kernel_get_overlapping<<<grid, block>>>(projection_map_gpu, n_vertex, n_polygon, *p_result);
+    CHECK(cudaGetLastError());
     CHECK(cudaDeviceSynchronize());
 }
 
@@ -534,7 +539,6 @@ void calculate_is_overlapping(projection_t* projection_map_gpu, int n_vertex, in
 
 void detect_overlap_gpu(polygon_t** polygon_list, int** result, int n_polygon){
     ASSERT(result != NULL, "result should not be NULL\n");
-    initDevice(0);
 
     // 1. flatten vertices of all polygons to device
     point_t* vertices_gpu = NULL;   // destructor: cudaFree
@@ -594,5 +598,4 @@ void detect_overlap_gpu(polygon_t** polygon_list, int** result, int n_polygon){
     cudaFree(i_polygon_map_gpu);
     cudaFree(vertices_gpu);
 
-    cudaDeviceReset();
 }

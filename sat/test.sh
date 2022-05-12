@@ -14,7 +14,7 @@ make test
 echo "========== start ==========="
 ./sat.out
 if [ $? -ne 0 ]; then
-    echo "${RED}FAILED${NC}"
+    echo -e "${RED}FAILED${NC}"
     exit 1
 fi
 

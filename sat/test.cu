@@ -434,10 +434,66 @@ static void test_calculate_is_overlapping(){
         for(int i_polygon_b=0; i_polygon_b<n_polygon; i_polygon_b++){
             int i = i_polygon_a*n_polygon + i_polygon_b;
             int is_overlapping = result[i];
+
+            if(i_polygon_a == i_polygon_b){
+		ASSERT(is_overlapping != 0,
+                       "polygon(%d, %d) mismatch. got not overlapping, should be overlapping\n", i_polygon_a, i_polygon_b);
+                continue;
+	    }
             // is_overlapping != 0 => overlapping
             // printf("a is overlapping b: %d\n", is_overlapping != 0);
             ASSERT(is_overlapping != 0,
-                   "polygon(%d, %d) mismatch. got %d, should be %d\n", i_polygon_a, i_polygon_b, is_overlapping != 0, 1);
+                   "polygon(%d, %d) mismatch. got not overlapping, should be overlapping\n", i_polygon_a, i_polygon_b);
+        }
+        // printf("\n");
+    }
+
+    // recycle resources
+    free(result);
+    cudaFree(result_gpu);
+    cudaFree(projection_map_gpu);
+
+    printf(PASSED);
+}
+
+static void test_calculate_is_overlapping_2(){
+    printf("calculate_is_overlapping_2...");
+
+    const int n_vertex = 8;
+    const int n_polygon = 2;
+    projection_t projection_map[8*2] = {
+        (projection_t){.left=-1.0000000000000000, .right=0.0000000000000000}, (projection_t){.left=-1.0000000000000000, .right=0.0000000000000000},
+        (projection_t){.left=0.0000000000000000, .right=1.0000000000000000}, (projection_t){.left=2.0000000000000000, .right=3.0000000000000000},
+        (projection_t){.left=0.0000000000000000, .right=1.0000000000000000}, (projection_t){.left=0.0000000000000000, .right=1.0000000000000000},
+        (projection_t){.left=-1.0000000000000000, .right=0.0000000000000000}, (projection_t){.left=-3.0000000000000000, .right=-2.0000000000000000},
+
+        (projection_t){.left=-1.0000000000000000, .right=0.0000000000000000}, (projection_t){.left=-1.0000000000000000, .right=0.0000000000000000},
+        (projection_t){.left=0.0000000000000000, .right=1.0000000000000000}, (projection_t){.left=2.0000000000000000, .right=3.0000000000000000},
+        (projection_t){.left=0.0000000000000000, .right=1.0000000000000000}, (projection_t){.left=0.0000000000000000, .right=1.0000000000000000},
+        (projection_t){.left=-1.0000000000000000, .right=0.0000000000000000}, (projection_t){.left=-3.0000000000000000, .right=-2.0000000000000000},
+    };
+
+    projection_t* projection_map_gpu = (projection_t*)cudaMallocBy(n_vertex*n_polygon * sizeof(projection_t), projection_map);
+
+    int* result_gpu = NULL;
+    calculate_is_overlapping(projection_map_gpu, n_vertex, n_polygon, /*out*/&result_gpu);
+    int* result = (int*)hostMallocBy(n_polygon*n_polygon * sizeof(int), result_gpu);
+
+    // assert result
+    for(int i_polygon_a=0; i_polygon_a<n_polygon; i_polygon_a++){
+        for(int i_polygon_b=0; i_polygon_b<n_polygon; i_polygon_b++){
+            int i = i_polygon_a*n_polygon + i_polygon_b;
+            int is_overlapping = result[i];
+
+            if(i_polygon_a == i_polygon_b){
+		ASSERT(is_overlapping != 0,
+                       "polygon(%d, %d) mismatch. got not overlapping, should be overlapping\n", i_polygon_a, i_polygon_b);
+                continue;
+	    }
+            // is_overlapping != 0 => overlapping
+            // printf("a is overlapping b: %d\n", is_overlapping != 0);
+            ASSERT(is_overlapping == 0,
+                   "polygon(%d, %d) mismatch. got overlapping, should be not overlapping\n", i_polygon_a, i_polygon_b);
         }
         // printf("\n");
     }
@@ -465,6 +521,7 @@ int main(int argc, char* argv[]){
     test_calculate_projection_endpoints();
     test_calculate_projection_segments();
     test_calculate_is_overlapping();
+    test_calculate_is_overlapping_2();
 
     cudaDeviceReset();
 
